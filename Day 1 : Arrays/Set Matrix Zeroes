@@ -1,6 +1,8 @@
 Leetcode Link : https://leetcode.com/problems/set-matrix-zeroes/
 
-
+Index :
+1. Solution 1 : My Solution
+2. Solution 2: Optimized Solution
 
 
 
@@ -10,6 +12,13 @@ Solution 1 : My Solution
 TC : O(m*n), where m is row and n is column
 SC : O(m*n)
 
+
+Approach :
+1. Store the row-column of the case when we get 0.
+2. Later acces those values (row-column pair) and set respective whole row and column as zero
+
+
+**CODE**
 
 class Solution {
     public void setZeroes(int[][] matrix) {
@@ -59,3 +68,40 @@ class Solution {
 
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+Solution 2 : Optimized (Striver's sol)
+TC : O(2*(N*M))
+SC : O(1)
+
+
+**CODE** 
+
+class Solution {
+    public void setZeroes(int[][] matrix) {
+        
+        int col0=1;
+        int row=matrix.length;
+        int cols=matrix[0].length;
+        
+        for(int i=0;i<row;i++){
+            
+            if(matrix[i][0]==0) col0=0;
+            
+            for(int j=1;j<cols;j++){
+                if(matrix[i][j]==0)
+                    matrix[i][0]=matrix[0][j]=0;
+            }
+        }
+        
+        for(int i=row-1;i>=0;i--){
+            for(int j=cols-1;j>=1;j--){
+                
+                if(matrix[i][0] == 0 || matrix[0][j]==0)
+                    matrix[i][j]=0;
+                
+            
+            }
+            if(col0 == 0) matrix[i][0]=0;
+        }
+    }
+}
