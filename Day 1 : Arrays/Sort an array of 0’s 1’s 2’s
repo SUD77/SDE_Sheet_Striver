@@ -1,0 +1,40 @@
+Leetcode Link: https://leetcode.com/problems/sort-colors/
+
+Index :
+1. Notes
+2. Solution 1: My Solution
+
+
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+Solution 1: My Solution 
+TC : O(3*n), n is the size of array
+SC : O(1)
+
+
+Logic : 
+1. Used count sort, to store the count of 0,1,2
+2. Used that count array to refil the existing nums array.
+
+**CODE**
+
+class Solution {
+    public void sortColors(int[] nums) {
+        
+        int[] countArray=new int[3];
+        int itr=0;
+        
+        for(int x:nums){
+            countArray[x]++;
+        }
+        
+        
+        for(int i=0;i<3;i++){
+            
+            for(int j=0;j<countArray[i];j++){
+                nums[itr++]=i;
+            }
+        }
+    }
+}
