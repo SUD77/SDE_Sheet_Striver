@@ -10,14 +10,14 @@ Index :
 
 Notes :
 
-1. My solution is recursion based. This q can be done by dp too, but not udpating that here. 
+1. My solution is recursion based. This q can be done by dp too, but not updating that here. 
 
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 Solution 1: My Solution 
-TC : 
-SC : 
+TC : O(n*n) , where n is no of rows. 
+SC : O(n*n)
 
 class Solution {
     public List<List<Integer>> generate(int numRows) {
