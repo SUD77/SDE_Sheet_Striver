@@ -3,6 +3,7 @@ Leetcode Link: https://leetcode.com/problems/sort-colors/
 Index :
 1. Notes
 2. Solution 1: My Solution
+3. Solution 2: Optimized (Striver)
 
 
 
@@ -35,6 +36,55 @@ class Solution {
             for(int j=0;j<countArray[i];j++){
                 nums[itr++]=i;
             }
+        }
+    }
+}
+
+
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+Solution 2: Optimized (Striver)
+TC : O(n), n is the size of array
+SC: O(1)
+
+
+**CODE**
+
+class Solution {
+    public void sortColors(int[] nums) {
+        
+        int low=0;
+        int high=nums.length-1;
+        int mid=0;
+        
+        int temp;
+        
+        while(mid<=high){
+            
+            switch(nums[mid]){
+                    
+                case 0: {
+                    
+                    temp=nums[low];
+                    nums[low]=nums[mid];
+                    nums[mid]=temp;
+                    low++;
+                    mid++;
+                    break;
+                }
+                case 1: 
+                    mid++;
+                    break;
+                case 2: {
+                    temp=nums[mid];
+                    nums[mid]=nums[high];
+                    nums[high]=temp;
+                    high--;
+                    break;
+                }
+            }
+            
         }
     }
 }
