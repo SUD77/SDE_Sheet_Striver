@@ -1,0 +1,40 @@
+Leetcode Link: https://leetcode.com/problems/maximum-subarray/submissions/
+
+Index : 
+1. Notes
+2. Solution 1: My Solution (Optimized)
+
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+Notes : 
+
+1. I directly did optimized code, after discussing with Shivangi.
+2. But do watch striver's video for naive approaches for interviews. 
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+Solution 1: My Solution (Optimized)
+TC: O(n), n is the length of the array
+SC: O(1)
+
+**CODE**
+
+class Solution {
+    public int maxSubArray(int[] nums) {
+        
+        int finalResult=Integer.MIN_VALUE;
+        int maxSum=0;
+        
+        for(int i=0;i<nums.length;i++){
+            
+            if(maxSum<0) maxSum=0;
+            maxSum+=nums[i];
+            
+            finalResult=Math.max(maxSum,finalResult);
+        }
+        
+        
+        return finalResult;
+    }
+}
