@@ -1,0 +1,41 @@
+Leetcode link: https://leetcode.com/problems/find-the-duplicate-number/
+
+Index : 
+
+1. Solution 1 : My solution 
+2. Solution 2 : Optimized (Striver's)
+
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+Solution 1: My Solution 
+TC : O(n), n is the length of the array
+SC : O(n)
+
+**CODE**
+
+class Solution {
+    public int findDuplicate(int[] nums) {
+        
+        HashMap<Integer,Integer> temp=new HashMap<>();
+        
+        for(int x:nums){
+            if(temp.containsKey(x)) return x;
+            
+            temp.put(x,temp.getOrDefault(x,0)+1);
+        }
+        
+        return 0;
+        
+    }
+}
+
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+Solution 2: Optimized (Striver's) 
+TC : O(n), n is the length of the array
+SC : O(1)
+
+**CODE**
+
