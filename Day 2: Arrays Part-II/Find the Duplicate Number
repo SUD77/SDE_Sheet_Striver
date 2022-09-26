@@ -37,5 +37,31 @@ Solution 2: Optimized (Striver's)
 TC : O(n), n is the length of the array
 SC : O(1)
 
+
+Note : 
+1. Do checkout Striver's video for the optimized approach.
+
 **CODE**
 
+class Solution {
+    public int findDuplicate(int[] nums) {
+        
+        int slow=nums[0];
+        int fast=nums[0];
+        
+        do{
+            slow=nums[slow];
+            fast=nums[nums[fast]];
+            
+        }while(slow!=fast);
+        
+        fast=nums[0];
+        
+        while(slow!=fast){
+            slow=nums[slow];
+            fast=nums[fast];
+        }
+        
+        return slow;
+    }
+}
