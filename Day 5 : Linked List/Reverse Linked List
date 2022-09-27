@@ -1,0 +1,34 @@
+Leetcode link: https://leetcode.com/problems/reverse-linked-list/
+
+Index : 
+
+1. Solution 1: My solution (Optimized one too)
+
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+Solution 1: My solution (Optimized one too)
+
+TC : O(n), n is the size of Linked List
+SC : O(1)
+
+**CODE**
+
+
+class Solution {
+    public ListNode reverseList(ListNode head) {
+              
+        ListNode Rll=null;
+  
+        while(head!=null){
+            ListNode temp=head.next;
+            head.next=Rll;
+            Rll=head;
+            head=temp;
+        }
+ 
+        return Rll;
+        
+    }
+}
