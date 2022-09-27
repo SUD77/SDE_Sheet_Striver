@@ -1,0 +1,50 @@
+Leetcode link: https://leetcode.com/problems/majority-element-ii/
+
+Index : 
+
+1. Note
+2. Solution 1 : My Solution (using Hashmap)
+
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+Note : 
+
+1. For optimized solution and intuition, check striver's video.
+
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+1. Solution 1 : My Solution (using Hashmap)
+
+TC : O(n) , n is size of array
+SC : O(n)
+
+
+**CODE**
+
+class Solution {
+    public List<Integer> majorityElement(int[] nums) {
+        
+        HashMap<Integer,Integer> eleCount=new HashMap<>();
+        List<Integer> result=new ArrayList<>();
+        
+        for(int x:nums){
+            eleCount.put(x,eleCount.getOrDefault(x,0)+1);
+        }
+        
+        System.out.println(eleCount);
+        
+        for(int x:nums){
+            
+            if(!result.contains(x) && eleCount.get(x)> (int) Math.floor(nums.length/3)) {
+                result.add(x);
+            }
+        }
+         
+        return result;
+    }
+}
+
+
+
