@@ -1,0 +1,39 @@
+Leetcode link: https://leetcode.com/problems/two-sum/
+
+Index : 
+1. Solution 1: My Solution 
+
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+Solution 1: My Solution 
+
+TC : O(n), n is the size of array
+SC : O(n)
+
+**CODE**
+
+class Solution {
+    public int[] twoSum(int[] nums, int target) {
+        
+        HashMap<Integer,Integer> tempMap=new HashMap<>();
+        
+        
+        int[] result=new int[2];
+        
+        for(int i=0;i<nums.length;i++){
+            int diff=target-nums[i];
+            
+            if(tempMap.containsKey(diff)){
+                result[0]=i;
+                result[1]=tempMap.get(diff);
+                return result;
+            }
+            
+            tempMap.put(nums[i],i);
+        }
+        
+        return result;       
+        
+    }
+}
