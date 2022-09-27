@@ -1,0 +1,29 @@
+Leetcode link: https://leetcode.com/problems/middle-of-the-linked-list/
+
+Index :
+
+1. Solution 1: My Solution (Optimized)
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+Solution 1: My Solution (Optimized)
+
+TC : O(n), n is the size of Linked list
+SC : O(1)
+
+**CODE**
+
+class Solution {
+    public ListNode middleNode(ListNode head) {
+        
+        ListNode slow=head;
+        ListNode fast=head;
+        
+        while(fast!=null && fast.next!=null  ){
+            slow=slow.next;
+            fast=fast.next.next;
+        }
+        
+        return slow;
+    }
+}
