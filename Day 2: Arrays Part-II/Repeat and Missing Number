@@ -1,0 +1,50 @@
+Link : https://www.interviewbit.com/problems/repeat-and-missing-number-array/
+
+Index : 
+1. Notes
+2. Solution
+
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+Note : 
+1. Not doing the optimized for this one, as Striver's explanation was very complex.
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+Solution 
+
+TC : O(n) + O(n), n is the size of array
+SC : O(n)
+
+**CODE**
+
+public class Solution {
+    // DO NOT MODIFY THE ARGUMENTS WITH "final" PREFIX. IT IS READ ONLY
+    public int[] repeatedNumber(final int[] A) {
+        
+        int[] countArr=new int[A.length+1];
+        int[] result=new int[2];
+        
+        Arrays.fill(countArr,0);
+        
+        for(int i=0;i<A.length;i++){
+            
+            countArr[A[i]]++;
+        }
+        
+        for(int i=1;i<=A.length;i++){
+            
+            
+            if(countArr[i]==0){
+                result[1]=i;
+            }
+            
+            if(countArr[i]==2){
+                result[0]=i;
+            }
+        }
+        
+        return result;
+    }
+}
