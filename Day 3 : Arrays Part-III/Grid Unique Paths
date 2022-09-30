@@ -1,0 +1,85 @@
+Leetcode link: https://leetcode.com/problems/unique-paths/
+
+Index : 
+1. Note
+2. Solution 1 : Recursion
+3. Solution 2 : Memoization
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+Note : 
+
+
+
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+Solution 1 : Recursion
+
+TC : Exponential
+SC : Exponential (as stack space is used for recursion)
+
+**CODE**
+
+class Solution {
+    public int uniquePaths(int m, int n) {
+        
+        return solUtil(m,n,0,0);
+    }
+    
+    public int solUtil(int m,int n,int i,int j){
+        
+        if(i>=m || j>=n) return 0;
+        
+        if(i==m-1 && j==n-1) return 1;
+            
+        int down =solUtil(m,n,i+1,j);
+        int right=solUtil(m,n,i,j+1);
+        
+        return down+right;
+    }
+}
+
+
+
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+Solution 2 : Memoization
+
+TC :  O(n*m)   
+SC :  O(n*m) 
+
+**CODE**
+
+
+class Solution {
+    public int uniquePaths(int m, int n) {
+        
+        int[][] dp=new int[m+1][n+1];
+        
+        for(int[] x:dp){
+            Arrays.fill(x,-1);
+        }
+        
+        return solUtil(m,n,0,0,dp);
+    }
+    
+    public int solUtil(int m,int n,int i,int j,int[][] dp){
+        
+        if(i>=m || j>=n) return 0;
+        
+        if(dp[i][j]!=-1) return dp[i][j];
+        
+        if(i==m-1 && j==n-1) return dp[i][j]=1;
+            
+        int down =solUtil(m,n,i+1,j,dp);
+        int right=solUtil(m,n,i,j+1,dp);
+        
+        return dp[i][j]=down+right;
+    }
+}
+
+
+
+
