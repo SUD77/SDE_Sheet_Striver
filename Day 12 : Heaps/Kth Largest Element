@@ -1,0 +1,36 @@
+Leetcode link: https://leetcode.com/problems/kth-largest-element-in-an-array/
+
+Index : 
+
+1. Solution : Using Priority
+
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+Solution : Using Priority
+
+TC : O(n log(n))
+SC : O(n)
+
+
+**CODE**
+
+class Solution {
+    public int findKthLargest(int[] nums, int k) {
+        
+        
+        PriorityQueue<Integer> tempQ=new PriorityQueue<>(Collections.reverseOrder());
+
+        for(int x:nums){
+            tempQ.add(x);
+        }
+
+        while (k>1){
+            tempQ.poll();
+            k--;
+        }
+
+        
+        return tempQ.poll();
+    }
+}
