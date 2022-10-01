@@ -1,0 +1,36 @@
+Leetcode link: https://leetcode.com/problems/binary-tree-preorder-traversal/
+
+Index : 
+
+1. Solution : Recursive
+
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+1. Solution : Recursive
+
+
+TC : O(n)
+SC : O(n)
+
+**CODE**
+
+class Solution {
+    public List<Integer> preorderTraversal(TreeNode root) {
+        
+        List<Integer> result=new ArrayList<>();
+        
+        solUtil(root,result);
+        
+        return result; 
+    }
+    
+    public void solUtil(TreeNode root,List<Integer> result){
+        
+        if(root==null) return;
+        
+        result.add(root.val);
+        solUtil(root.left,result);
+        solUtil(root.right,result);
+    }
+}
