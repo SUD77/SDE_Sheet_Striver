@@ -1,0 +1,36 @@
+Leetcode link: https://leetcode.com/problems/binary-tree-inorder-traversal/
+
+Index : 
+
+1. Solution : Recursive
+
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+1. Solution : Recursive
+
+
+TC : O(n)
+SC : O(n)
+
+**CODE**
+
+class Solution {
+    public List<Integer> inorderTraversal(TreeNode root) {
+        
+        List<Integer> result=new ArrayList<>();
+        
+        solUtil(root,result);
+        
+        return result; 
+    }
+    
+    public void solUtil(TreeNode root,List<Integer> result){
+        
+        if(root==null) return;
+        
+        solUtil(root.left,result);
+        result.add(root.val);
+        solUtil(root.right,result);
+    }
+}
