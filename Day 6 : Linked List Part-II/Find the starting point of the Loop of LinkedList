@@ -1,0 +1,55 @@
+Leetcode link: https://leetcode.com/problems/linked-list-cycle-ii/
+
+Index : 
+1. Note
+2. Solution : Optimized
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+Note : 
+
+1. Naive solution is, to use set and store linked list nodes in it. Iterate till head reaches null. It a duplicate node comes up, then cycle exists.
+
+
+
+
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+Solution: Optimized
+
+TC : O(n), n is nodes in LL
+SC : O(1)
+
+**CODE**
+
+public class Solution {
+    public ListNode detectCycle(ListNode head) {
+        
+        
+        ListNode slow=head;
+        ListNode fast=head;
+        
+        while(fast!=null && fast.next!=null){
+            
+            slow=slow.next;
+            fast=fast.next.next;
+            
+            if(slow==fast){
+                
+                slow=head;
+                
+                while(slow!=fast){
+                    slow=slow.next;
+                    fast=fast.next;
+                    
+                    
+                }
+                
+                return slow;
+            }
+        }
+        
+        
+        return null;
+    }
+}
