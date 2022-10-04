@@ -1,0 +1,52 @@
+Leetcode link : https://leetcode.com/problems/longest-substring-without-repeating-characters/
+
+Index : 
+1. Solution : My Solution
+
+
+
+
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+Solution: My solution 
+
+TC : O(n)
+SC : O(n)
+
+**NOTE**
+
+- if(map.containsKey(s.charAt(i))){
+     ptr=Math.max(map.get(s.charAt(i))+1,ptr);
+  }
+  
+- this line is imp as, for the test case abbabcdefgbnb
+- so here, b repeats multiple times, but need pointer to not go back to b (at index 1), when it faces the b (at last index), as that will contain, repeating
+characters. 
+
+**CODE**
+
+class Solution {
+    public int lengthOfLongestSubstring(String s) {
+        
+        HashMap<Character,Integer> map=new HashMap<>();
+
+        int maxLength=0;
+        int currLength=0;
+        int ptr=0;
+
+        for(int i=0;i<s.length();i++){
+
+            if(map.containsKey(s.charAt(i))){
+                ptr=Math.max(map.get(s.charAt(i))+1,ptr);
+            }
+            
+            currLength=i-ptr+1;
+            maxLength=Math.max(currLength,maxLength);
+            map.put(s.charAt(i),i);
+
+        }
+
+        return maxLength;
+    }
+}
