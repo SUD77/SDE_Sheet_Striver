@@ -1,0 +1,27 @@
+Leetcode link : https://leetcode.com/problems/maximum-depth-of-binary-tree/
+
+Index : 
+1. Solution : Striver (Optimized)
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+Solution : Striver (Optimized)
+
+TC : O(n)
+SC : O(1)
+
+**CODE**
+class Solution {
+    
+    int maxH=0;
+    public int maxDepth(TreeNode root) {
+        
+        if(root==null) return 0;
+        
+        int lh=maxDepth(root.left);
+        int rh=maxDepth(root.right);
+        
+        return 1+Math.max(lh,rh);
+        
+    }
+}
