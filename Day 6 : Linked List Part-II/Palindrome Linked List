@@ -1,0 +1,60 @@
+Leetcode link : https://leetcode.com/problems/palindrome-linked-list/
+
+Index :
+1. Solution: Mine
+
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+Solution : Mine
+
+TC : O(n)
+SC : O(1)
+
+**CODE**
+
+class Solution {
+    public boolean isPalindrome(ListNode head) {
+        
+        ListNode slow=head;
+        ListNode fast=head;
+        
+        while(fast!=null && fast.next!=null){
+            slow=slow.next;
+            fast=fast.next.next;
+        }
+        
+        /*For odd length linked list*/
+        if(fast!=null){
+            slow=slow.next;
+        }
+        
+        slow=reverseList(slow);
+        
+        while(slow!=null && head!=null){
+            if(head.val!=slow.val) return false;
+            
+            head=head.next;
+            slow=slow.next;
+        }
+        
+        return true;
+        
+    }
+    
+    public ListNode reverseList(ListNode head){
+        
+        ListNode Rll=null;
+        
+        while(head!=null){
+            
+            ListNode temp=head.next;
+            head.next=Rll;
+            Rll=head;
+            head=temp;
+        }
+
+        return Rll;
+    }
+}
+
