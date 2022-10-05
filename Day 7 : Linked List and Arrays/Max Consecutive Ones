@@ -1,0 +1,32 @@
+Leetcode link : https://leetcode.com/problems/max-consecutive-ones/
+
+Index : 
+1. Solution : Mine
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+ Solution : Mine
+ 
+ TC : O(n) , n is the len of array
+ SC : O(1)
+ 
+ **CODE**
+ 
+ class Solution {
+    public int findMaxConsecutiveOnes(int[] nums) {
+        
+        int maxLen=Integer.MIN_VALUE;
+        int currLen=0;
+        
+        for(int i=0;i<nums.length;i++){
+            
+            if(nums[i]==1) currLen+=1;
+            else currLen=0;
+            
+            maxLen=Math.max(currLen,maxLen);
+            
+        }
+       
+        return maxLen;
+    }
+}
