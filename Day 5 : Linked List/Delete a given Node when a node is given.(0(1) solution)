@@ -1,0 +1,22 @@
+Leetcode link: https://leetcode.com/problems/delete-node-in-a-linked-list/
+
+Index : 
+1. Solution : Striver's (Optimized)
+
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+Solution : Striver's (Optimized)
+
+TC : O(1)
+SC : O(1)
+
+**CODE**
+
+class Solution {
+    public void deleteNode(ListNode node) {
+        
+        node.val=node.next.val;
+        node.next=node.next.next;
+    }
+}
