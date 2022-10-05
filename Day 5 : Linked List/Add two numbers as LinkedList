@@ -1,0 +1,94 @@
+Leetcode link: https://leetcode.com/problems/add-two-numbers/
+
+Index :
+
+1. Solution: My solution
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+Solution : My Solution
+
+TC : O(Max(len of l1 or l2));
+SC : O(1)
+
+**CODE**
+
+class Solution {
+    public ListNode addTwoNumbers(ListNode l1, ListNode l2) {
+       
+        
+        
+        ListNode result=new ListNode();
+        ListNode refR=result;
+        
+        int carry=0;
+ 
+        while(l1!=null && l2!=null){
+            
+            
+            int tempVal=l1.val+l2.val+carry;
+            carry=0;
+            
+            if(tempVal>9){
+                carry=tempVal/10;
+                tempVal=tempVal%10;
+                
+            }
+            
+            
+            
+            ListNode temp=new ListNode(tempVal);
+            result.next=temp;
+            result=temp;
+            
+            l1=l1.next;
+            l2=l2.next;
+            
+        }
+        
+        while(l1!=null){
+            
+            int tempVal=l1.val+carry;
+            carry=0;
+            
+            if(tempVal>9){
+                carry=tempVal/10;
+                tempVal=tempVal%10;
+                
+            }
+ 
+            ListNode temp=new ListNode(tempVal);
+            result.next=temp;
+            result=temp;
+            
+            l1=l1.next;
+        }
+        
+        while(l2!=null){
+            
+            int tempVal=l2.val+carry;
+            carry=0;
+            
+            if(tempVal>9){
+                carry=tempVal/10;
+                tempVal=tempVal%10;
+                
+            }
+ 
+            ListNode temp=new ListNode(tempVal);
+            result.next=temp;
+            result=temp;
+            
+            l2=l2.next;
+        }
+        
+        if(carry>0){
+            ListNode temp=new ListNode(carry);
+            result.next=temp;
+            result=temp;
+        }
+    
+        return refR.next;
+    }
+    
+}
