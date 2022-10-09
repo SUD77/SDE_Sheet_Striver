@@ -1,0 +1,51 @@
+Leetcode link : https://leetcode.com/problems/copy-list-with-random-pointer/
+
+INDEX : 
+1. NOTE
+2. Solution
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+Note : 
+
+1. This is not the optimized solution. For optimized, check striver's video. 
+
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+Solution : 
+
+TC : O(n) , n is the no of nodes in LL
+SC : O(n)
+
+**CODE**
+
+class Solution {
+    public Node copyRandomList(Node head) {
+        
+       Map<Node,Node> mp=new HashMap<>();
+        
+        Node dummy=head;
+        
+        while(dummy!=null){
+            
+            Node temp=new Node(dummy.val);
+            mp.put(dummy,temp);
+            dummy=dummy.next;
+        }
+        
+        dummy=head;
+        Node res=mp.get(dummy);
+        
+        while(dummy!=null){
+            
+            Node deepCopy=mp.get(dummy);
+            deepCopy.next=mp.get(dummy.next);
+            deepCopy.random=mp.get(dummy.random);
+            
+            dummy=dummy.next;
+        }
+        
+        return res;
+    }
+}
