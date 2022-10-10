@@ -1,0 +1,36 @@
+Link : https://www.codingninjas.com/codestudio/problems/975277?topList=striver-sde-sheet-problems&leftPanelTab=0
+
+Index :
+
+1. Solution : Striver (Optimal)
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+Solution : Striver (Optimal)
+
+TC : O(amount)  (Suppose, amount using just 1 rs)
+SC : O(1)
+
+**CODE**
+
+
+public static int findMinimumCoins(int amount)
+    {
+        // Write your code here.
+        ArrayList<Integer> ans=new ArrayList<>();
+    
+        int[] coins={1,2,5,10,20,50,100,500,1000};
+        int n=coins.length;
+        
+        for(int i=n-1;i>=0;i--){
+            
+            while(amount>=coins[i]){
+                amount-=coins[i];
+                ans.add(coins[i]);
+            }
+        }
+    
+        return ans.size();
+    }
+}
