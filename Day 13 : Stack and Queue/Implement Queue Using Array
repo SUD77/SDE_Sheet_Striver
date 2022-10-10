@@ -1,0 +1,75 @@
+Link : https://www.codingninjas.com/codestudio/problems/2099908?topList=striver-sde-sheet-problems&leftPanelTab=0
+
+
+Index :
+1. Solution 
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+Solution 
+
+TC : O(1)
+SC : O(n)
+
+**CODE**
+
+public class Queue {
+
+    int qfront,rear,size,queueSize;
+    int[] q;
+    
+    
+    Queue() {
+       
+        rear=0;
+        qfront=0;
+        size=0;
+        queueSize=100010;
+        q=new int[100010];
+    }
+
+
+    boolean isEmpty() {
+        
+        if(qfront==rear){
+            return true;
+        }
+        return false;
+    }
+
+    void enqueue(int data) {
+        
+        q[rear]=data;
+        rear=rear+1;
+        
+        size++;
+    }
+
+    int dequeue() {
+       
+        if(isEmpty()){
+            return -1;
+        }
+        
+        int ans=q[qfront];
+        qfront++;
+        size--;
+        
+        if(qfront==rear){
+            qfront=0;
+            rear=0;
+        }
+        
+        return ans;
+    }
+
+    int front() {
+        
+        if(isEmpty()){
+            return -1;
+        }
+        
+        return q[qfront];
+    }
+
+}
