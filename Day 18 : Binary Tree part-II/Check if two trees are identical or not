@@ -1,0 +1,64 @@
+Leetcode link: https://leetcode.com/problems/same-tree/
+
+Index :
+1. Solution : Mine 
+2. Solution : Striver's
+
+
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+Solution : Mine 
+
+TC : O(n)
+SC : S(n)
+
+**CODE**
+
+class Solution {
+    public boolean isSameTree(TreeNode p, TreeNode q) {
+        
+        List<Integer> l1=new ArrayList<>();
+        List<Integer> l2=new ArrayList<>();
+        
+        dfsUtil(p,l1);
+        dfsUtil(q,l2);
+        
+        return l1.equals(l2);
+    }
+    
+    public void dfsUtil(TreeNode p, List<Integer> x){
+        
+        if(p==null) {
+            x.add(0);    
+            return;
+        }
+        
+        x.add(p.val);
+        dfsUtil(p.left,x);
+        dfsUtil(p.right,x);
+    }
+}
+
+
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+Solution : Striver's
+
+TC : O(n)
+SC : O(n)
+
+
+**CODE**
+
+class Solution {
+    public boolean isSameTree(TreeNode p, TreeNode q) {
+        
+        if(p==null || q==null){
+            return p==q;
+        }
+        
+        return (p.val==q.val) && isSameTree(p.left,q.left) && isSameTree(p.right,q.right);
+    }
+}
