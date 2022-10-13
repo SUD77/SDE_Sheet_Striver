@@ -1,0 +1,37 @@
+Link :  https://www.codingninjas.com/codestudio/problems/ceil-from-bst_920464?source=youtube&campaign=Striver_Tree_Videos&leftPanelTab=0
+
+
+Index :
+1. Solution
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+Solution 
+
+**CODE**
+
+public class Solution {
+
+    public  static int findCeil(TreeNode<Integer> root, int x) {
+
+        // Write your code here
+        int ceil=-1;
+        
+        while(root!=null){
+            if(root.data==x){
+                ceil=root.data;
+                return ceil;
+            }
+            
+            if(x>root.data){
+                root=root.right;
+            }else{
+                ceil=root.data;
+                root=root.left;
+            }
+        }
+        
+        return ceil;
+
+    }
+}
