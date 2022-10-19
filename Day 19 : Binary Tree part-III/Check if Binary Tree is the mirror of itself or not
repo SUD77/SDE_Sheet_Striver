@@ -1,0 +1,37 @@
+Link : https://practice.geeksforgeeks.org/problems/mirror-tree/1
+
+Index : 
+1. Solution 
+
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+1. Solution 
+
+**CODE**
+
+class Solution {
+    // Function to convert a binary tree into its mirror tree.
+    
+    Node root;
+    
+    void mirror() {
+        // Your code here
+        root=mirror(root);
+    }
+    
+    Node mirror(Node node){
+        
+        if(node == null)
+            return node;
+            
+            
+        Node left=mirror(node.left);
+        Node right=mirror(node.right);
+        
+        node.left=right;
+        node.right=left;
+        
+        return node;
+    }
+}
