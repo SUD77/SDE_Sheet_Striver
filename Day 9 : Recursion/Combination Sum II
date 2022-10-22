@@ -1,0 +1,60 @@
+Link : https://leetcode.com/problems/combination-sum-ii/
+
+Index :
+1. Solution 
+
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+Solution 
+
+
+**CODE**
+
+class Solution {
+    public List<List<Integer>> combinationSum2(int[] candidates, int target) {
+       
+        Arrays.sort(candidates);
+        
+        List<List<Integer>> res=new ArrayList<>();
+
+        solUtil(candidates,target,new ArrayList<>(),res,0);
+        
+        return res;
+        
+    }
+    
+    public void solUtil(int[] candidates,int target,List<Integer> tempArr,List<List<Integer>> tempRes,int index){
+        
+        
+        if(target==0){
+            tempRes.add(new ArrayList(tempArr));
+            return;
+        }
+        
+        if(index==candidates.length){
+            
+            if(target==0){
+                tempRes.add(new ArrayList(tempArr));
+                
+            }
+            return;
+        }
+        
+        
+        for(int i=index;i<candidates.length;i++){
+            
+            if(candidates[i]>target) break;
+            
+            tempArr.add(candidates[i]);
+            solUtil(candidates,target-candidates[i],tempArr,tempRes,i+1);
+            tempArr.remove(tempArr.size()-1);
+            
+             while(i+1<candidates.length && candidates[i+1]==candidates[i]) i++;
+            
+           
+        }       
+        
+    }
+}
+
