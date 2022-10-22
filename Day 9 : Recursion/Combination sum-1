@@ -1,0 +1,50 @@
+Link : https://leetcode.com/problems/combination-sum/
+
+Index :
+1. Soluton 
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+Solution : 
+
+**CODE**
+
+class Solution {
+    public List<List<Integer>> combinationSum(int[] candidates, int target) {
+        
+        List<List<Integer>> res=new ArrayList<>();
+        
+        solUtil(candidates,target,0,0,new ArrayList<>(), res);
+        
+        return res;
+    }
+    
+    public void solUtil(int[] candidates, int target, int index,int sum,List<Integer> tempArr,List<List<Integer>> res){
+        
+        if(index==candidates.length){
+            
+            if(sum==target)
+                res.add(new ArrayList(tempArr));
+            return;
+        }
+        
+        if(sum==target) {
+            
+            res.add(new ArrayList(tempArr));
+            return;
+        }
+        
+        
+        if(target>sum){
+            tempArr.add(candidates[index]);
+            solUtil(candidates,target,index,sum+candidates[index],tempArr,res);
+            tempArr.remove(tempArr.size()-1);
+        }
+        
+        //pick or not pick
+        solUtil(candidates,target,index+1,sum,tempArr,res);
+        
+        
+        
+    }
+}
