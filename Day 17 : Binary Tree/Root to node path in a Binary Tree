@@ -1,0 +1,41 @@
+Link : https://www.interviewbit.com/problems/path-to-given-node/
+
+Index :
+1. Solution 
+
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+Solution : 
+
+
+**CODE**
+
+public class Solution {
+    public int[] solve(TreeNode A, int B) {
+        List<Integer> ans = new ArrayList<>();
+        helper(A , B, new ArrayList<>() , ans);
+        
+        int[] res = new int[ans.size()];
+        int i =0;
+        for(int e : ans){
+            res[i++] = e;
+        }
+        return res;
+    }
+    private static void helper(TreeNode node, int B,  List<Integer> ds , List<Integer> ans){
+        if(node == null) return;
+        if(node.val == B) {
+            ds.add(node.val);
+            for(Integer x : ds){
+                ans.add(x);
+            }
+            return;
+        }
+        
+        ds.add(node.val);
+        helper(node.left , B , ds, ans);
+        helper(node.right, B, ds, ans);
+        ds.remove(ds.size()-1);
+    }
+}
