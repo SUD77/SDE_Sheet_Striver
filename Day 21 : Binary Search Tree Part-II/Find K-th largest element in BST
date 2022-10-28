@@ -1,0 +1,47 @@
+Link : https://practice.geeksforgeeks.org/problems/kth-largest-element-in-bst/1
+
+
+Index : 
+1. Solution 
+
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+Solution 
+
+**CODE**
+
+class Solution
+{
+    // return the Kth largest element in the given BST rooted at 'root'
+    
+    public int kthLargest(Node root,int k)
+    {
+        //Your code here
+        Node large=solUtil(root,new int[]{k});
+        
+        return large.data;
+    }
+    
+    public Node solUtil(Node root,int k[]){
+        
+        if(root==null)
+        return null;
+         
+       
+        Node right=solUtil(root.right,k);
+        
+       
+        
+        if(right!=null) return right;
+        k[0]--;
+        
+        if(k[0]==0) {
+            // System.out.println(k);
+            return root;
+        }
+        
+        
+        return solUtil(root.left,k);
+    }
+}
