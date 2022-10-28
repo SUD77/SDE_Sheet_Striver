@@ -1,0 +1,39 @@
+Link : https://www.codingninjas.com/codestudio/problems/merge-k-sorted-arrays_975379?leftPanelTab=0
+
+Index :
+1. Solution 
+
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+Solution 
+
+**CODE**
+
+import java.util.ArrayList;
+import java.util.*;
+
+public class Solution 
+{
+	public static ArrayList<Integer> mergeKSortedArrays(ArrayList<ArrayList<Integer>> kArrays, int k)
+	{
+		// Write your code here.
+        
+        PriorityQueue<Integer> pq=new PriorityQueue<>();
+        
+        for(ArrayList<Integer> x: kArrays){
+            for(Integer y:x){
+                pq.add(y);
+            }
+        }
+        
+        ArrayList<Integer> result=new ArrayList<>();
+        
+        while(pq.size()>0){
+            result.add(pq.poll());
+        }
+        
+        return result;
+        
+	}
+}
